@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './usuario-novo.css';
 import firebase from '../../config/firebase';
 import 'firebase/compat/auth';
+import Navbar from '../../components/navbar';
 
 function NovoUsuario() {
     /**
@@ -52,24 +53,28 @@ function NovoUsuario() {
     }
 
     return(
-        <div className="form-cadastro">
-            <form className="text-center form-login mx-auto mt-5">
-                <h1 className="h3 mb-3 text-black font-weight-bold">Cadastro</h1>
+        <>
+            <Navbar/>
 
-                <input onChange={e => setEmail(e.target.value)} type="email" className="form-control my-2" placeholder="Email"/>
-                <input onChange={e => setSenha(e.target.value)} type="password" className="form-control my-2" placeholder="Senha"/>
+            <div className="form-cadastro">
+                <form className="text-center form-login mx-auto mt-5">
+                    <h1 className="h3 mb-3 text-black font-weight-bold">Cadastro</h1>
 
-                {
-                    carregando ? <div class="spinner-border text-danger" role="status"><span class="sr-only">&#129300;</span></div>
-                    : <button onClick={cadastrar} type="button" className="btn btn-lg btn-block mt-3 mb-5 form-control btn-cadastro">Cadastrar</button>
-                }
+                    <input onChange={e => setEmail(e.target.value)} type="email" className="form-control my-2" placeholder="Email"/>
+                    <input onChange={e => setSenha(e.target.value)} type="password" className="form-control my-2" placeholder="Senha"/>
 
-                <div className="msg-login text-black text-center my-5">
-                    {msgTipo === "sucesso" && <span><strong>WoW!</strong> Usuário cadastrado com sucesso! &#128526;</span>}
-                    {msgTipo === "erro" && <span><strong>Ops!</strong> {msg} &#128546; </span>}   
-                </div>
-            </form>
-        </div>
+                    {
+                        carregando ? <div class="spinner-border text-danger" role="status"><span class="sr-only">&#129300;</span></div>
+                        : <button onClick={cadastrar} type="button" className="btn btn-lg btn-block mt-3 mb-5 form-control btn-cadastro">Cadastrar</button>
+                    }
+
+                    <div className="msg-login text-black text-center my-5">
+                        {msgTipo === "sucesso" && <span><strong>WoW!</strong> Usuário cadastrado com sucesso! &#128526;</span>}
+                        {msgTipo === "erro" && <span><strong>Ops!</strong> {msg} &#128546; </span>}   
+                    </div>
+                </form>
+            </div>
+        </>
     )
 }
 
