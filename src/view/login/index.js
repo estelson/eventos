@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './login.css';
 import firebase from '../../config/firebase';
 import 'firebase/compat/auth';
+import {Link} from 'react-router-dom';
 
 function Login() {
     /**
@@ -42,7 +43,7 @@ function Login() {
                 <div className="opcoes-login mt-5 text-center">
                     <a href="#" className="mx-2">Recuperar senha</a>
                     <span className="text-white">&#9733;</span>
-                    <a href="#" className="mx-2">Quero cadastrar</a>
+                    <Link to="novousuario" className="mx-2">Quero cadastrar</Link>
                 </div>
             </form>
         </div>
