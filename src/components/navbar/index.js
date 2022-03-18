@@ -9,7 +9,8 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
-                <span className="navbar-brand text-white font-weight-bold">Eventos</span>
+                {/* <span className="navbar-brand text-white font-weight-bold">Eventos</span> */}
+                <i className="far fa-smile-wink text-white fa-2x"/>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars text-white"></i>
@@ -18,7 +19,7 @@ function Navbar() {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                            <Link className="nav-link ml-2" aria-current="page" to="/">Home</Link>
                         </li>
 
                         {
