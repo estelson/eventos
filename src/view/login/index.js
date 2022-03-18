@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import './login.css';
 import firebase from '../../config/firebase';
 import 'firebase/compat/auth';
-import {Link} from 'react-router-dom';
+//import {Link, Redirect} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
 
 function Login() {
     /**
@@ -14,9 +16,15 @@ function Login() {
     const[senha, setSenha] = useState();
     const[msgTipo, setMsgTipo] = useState();
 
+    const dispatch = useDispatch();
+
     function logar() {
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             setMsgTipo("sucesso")
+
+            setTimeout(() => {
+                dispatch({type: "LOG_IN", usuarioEmail: email});
+            }, 2000)
         }).catch(erro =>{
             setMsgTipo("erro");
         });
@@ -24,6 +32,10 @@ function Login() {
 
     return (
         <div className="login-content d-flex align-items-center">
+            {/* A partir da V6 do react-router-dom o Redirect foi substituído pelo Navigate */}
+            {/* {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null} */}
+            {useSelector(state => state.usuarioLogado) > 0 ? <Navigate to='/' /> : null}
+
             <form className="form-signin mx-auto">
                 <div className="text-center mb-4">
                     <img className="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
