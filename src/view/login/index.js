@@ -32,8 +32,6 @@ function Login() {
 
     return (
         <div className="login-content d-flex align-items-center">
-            {/* A partir da V6 do react-router-dom o Redirect foi substituído pelo Navigate */}
-            {/* {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null} */}
             {useSelector(state => state.usuarioLogado) > 0 ? <Navigate to='/' /> : null}
 
             <form className="form-signin mx-auto">
